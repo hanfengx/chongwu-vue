@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
-import LoginHome from '../views/LoginHome.vue';
+import { createRouter, createWebHashHistory } from 'vue-router'
+import LoginHome from '../views/LoginHome.vue'
 
 const routes = [
   {
@@ -26,11 +26,11 @@ const routes = [
     },
     component: () => import('../views/MainPet.vue'),
   },
-];
+]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-});
+})
 
-export default router;
+export default router
