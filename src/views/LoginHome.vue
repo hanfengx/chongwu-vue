@@ -1,78 +1,83 @@
 <template>
   <div
-    class="container login col-md-6 inset"
-    align="center"
-    style="margin-top: 10%"
+    id="main"
+    class="main"
   >
-    <h2>欢迎光临宠物系统</h2>
-    <el-form
-      ref="elForm" 
-      :model="formData"
-      :rules="rules"
-      size="medium"
-      label-width="100px" 
+    <div
+      class="container login col-md-6 inset"
+      align="center"
+      style="margin-top: 10%"
     >
-      <el-form-item
-        label="账号"
-        prop="userName"
+      <h2>欢迎光临宠物系统</h2>
+      <el-form
+        ref="elForm" 
+        :model="formData"
+        :rules="rules"
+        size="medium"
+        label-width="100px" 
       >
-        <el-input
-          v-model="formData.userName"
-          placeholder="请输入账号"
-          clearable
-          :style="{ width: '80%' }"
-        />
-      </el-form-item>
-      <el-form-item
-        label="密码"
-        prop="passWord"
+        <el-form-item
+          label="账号"
+          prop="userName"
+        >
+          <el-input
+            v-model="formData.userName"
+            placeholder="请输入账号"
+            clearable
+            :style="{ width: '80%' }"
+          />
+        </el-form-item>
+        <el-form-item
+          label="密码"
+          prop="passWord"
+        >
+          <el-input
+            v-model="formData.passWord"
+            placeholder="请输入密码"
+            show-password
+            clearable
+            :style="{ width: '80%' }"
+          />
+        </el-form-item>
+        <el-form-item
+          label="验证码"
+          prop="verifyCode"
+        >
+          <el-input
+            v-model="formData.verifyCode"
+            placeholder="请输入"
+            clearable
+            :style="{ width: '40%' }"
+          />
+          <img
+            id="verifyimg"
+            :src="imgcodeUrl"
+            @click="Verification"
+          >
+        </el-form-item>
+        <el-form-item size="large">
+          <el-button
+            type="primary"
+            size="medium"
+            @click="submitForm"
+          >
+            提交
+          </el-button>
+          <el-button
+            size="medium"
+            @click="dialogFormVisible = true"
+          >
+            注册
+          </el-button>
+        </el-form-item>
+      </el-form>
+      <el-dialog
+        v-model="dialogFormVisible"
+        title="注册"
       >
-        <el-input
-          v-model="formData.passWord"
-          placeholder="请输入密码"
-          show-password
-          clearable
-          :style="{ width: '80%' }"
-        />
-      </el-form-item>
-      <el-form-item
-        label="验证码"
-        prop="verifyCode"
-      >
-        <el-input
-          v-model="formData.verifyCode"
-          placeholder="请输入"
-          clearable
-          :style="{ width: '40%' }"
-        />
-        <img
-          id="verifyimg"
-          :src="imgcodeUrl"
-          @click="Verification"
-        >
-      </el-form-item>
-      <el-form-item size="large">
-        <el-button
-          type="primary"
-          size="medium"
-          @click="submitForm"
-        >
-          提交
-        </el-button>
-        <el-button
-          size="medium"
-          @click="dialogFormVisible = true"
-        >
-          注册
-        </el-button>
-      </el-form-item>
-    </el-form>
-    <el-dialog
-      v-model="dialogFormVisible"
-      title="注册"
-    >
-      <login-registered />
-    </el-dialog>
+        <login-registered />
+      </el-dialog>
+    </div>
   </div>
 </template>
 <script>
@@ -120,7 +125,7 @@ export default {
   computed: {},
   watch: {},
   created() {
-    document.title = '宠物租赁'
+    document.title = '宠物管理'
   },
   mounted() {
     this.Verification()
@@ -170,12 +175,18 @@ export default {
   margin: auto;
   margin-top: 10%;
 }
-body {
+body{
+  margin: 0%;
+  padding: 0%;
+}
+.main {
+  width: 100%;
+  height: 100%;
   background: url(../img/banner.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 blockquote,
 q {
@@ -201,9 +212,6 @@ img {
 }
 /*end reset*/
 /****-----start-body----****/
-body {
-  background-color: #0091e6;
-}
 h1 {
   font-size: 2.4em;
   padding-bottom: 28px;
